@@ -1,14 +1,16 @@
-<?php 
+<?php
 $hostname = "localhost";
 $username = "root";
 $password = "";
-$dbname = "pendaftaran";
+$dbname   = "pendaftaran";
 
 try {
-    $connect = new PDO ("mysql:host=$hostname;dbname=$dbname", $username, $password);
+    $connect = new PDO(
+        "mysql:host=$hostname;dbname=$dbname;charset=utf8",
+        $username,
+        $password
+    );
+    $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo "error :" . $e->getMassage();
-    
+    die("KONEKSI GAGAL: " . $e->getMessage());
 }
-
-?>
